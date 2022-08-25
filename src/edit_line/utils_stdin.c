@@ -6,7 +6,7 @@
 /*   By: geargenc <geargenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 01:37:38 by jolabour          #+#    #+#             */
-/*   Updated: 2019/04/23 10:34:33 by geargenc         ###   ########.fr       */
+/*   Updated: 2022/08/25 18:00:26 by geargenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,10 @@ void			ft_move_cursor_left(int start, int end)
 void			ft_paste(t_42sh *sh)
 {
 	int			len;
-	int			i;
 	char		*tmp;
 
 	if (sh->stdin->str_to_paste == NULL)
 		return ;
-	i = 0;
 	len = ft_strlen(sh->stdin->str_to_paste);
 	if (sh->stdin->len_line + len >= sh->stdin->size_of_input - 10)
 		up_input(sh);

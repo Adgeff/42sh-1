@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils_exp_ari.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achavy <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: geargenc <geargenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 02:19:40 by achavy            #+#    #+#             */
-/*   Updated: 2019/04/25 03:53:23 by jolabour         ###   ########.fr       */
+/*   Updated: 2022/08/25 18:11:21 by geargenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 char			*my_get_var(t_42sh *sh, char *name)
 {
 	char	*str;
-	int		i;
 	char	*ret;
 
-	i = 0;
 	ret = NULL;
 	str = ft_strjoin(name, "=");
 	if ((ret = ft_getenv(sh->env, str, ft_strlen(str), sh->var)))

@@ -6,7 +6,7 @@
 /*   By: geargenc <geargenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 04:26:44 by jolabour          #+#    #+#             */
-/*   Updated: 2019/04/25 05:42:19 by geargenc         ###   ########.fr       */
+/*   Updated: 2022/08/25 17:56:06 by geargenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,27 +77,6 @@ typedef struct				s_list_ari
 	char					*var;
 	char					*name;
 }							t_list_ari;
-
-typedef enum				e_errno_val
-{
-	_ENOMEM = 1,
-	_ENAMETOOLONG,
-	_ENOENV,
-	_ENAMEENV,
-	_ENOHOME,
-	_ENOUSER,
-	_ENOVAR,
-	_ENOCMD,
-	_ELOOP,
-	_ENOTDIR,
-	_EINVAL,
-	_ENOENT,
-	_ENOX,
-	_ERRNO_VALUES
-}							t_errno;
-
-static t_errno				g_errno;
-static const char			*g_errors[_ERRNO_VALUES];
 
 typedef struct				s_env
 {

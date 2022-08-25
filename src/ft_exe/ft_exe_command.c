@@ -6,7 +6,7 @@
 /*   By: geargenc <geargenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 09:49:16 by geargenc          #+#    #+#             */
-/*   Updated: 2019/04/20 02:55:17 by geargenc         ###   ########.fr       */
+/*   Updated: 2022/08/25 18:09:21 by geargenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,9 @@ void				get_path_ht(t_42sh *shell)
 
 int					ft_exe_command_ht(t_node *current, t_42sh *shell)
 {
-	char			*path;
-
-	path = NULL;
 	if (shell->argv->argv[0] && shell->argv->argv[0][0])
 	{
-		path = ft_exe_command_get_path(shell);
+		ft_exe_command_get_path(shell);
 		get_path_ht(shell);
 		if (shell->valide_path)
 			ht_insert(shell->valide_path, shell->argv->argv[0],

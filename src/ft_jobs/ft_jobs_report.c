@@ -6,7 +6,7 @@
 /*   By: geargenc <geargenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 11:22:58 by geargenc          #+#    #+#             */
-/*   Updated: 2020/03/18 19:13:30 by geargenc         ###   ########.fr       */
+/*   Updated: 2022/08/25 18:09:54 by geargenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void			ft_report_job_def(t_joblist *job, t_42sh *sh, int fd)
 	else if (!ft_stopped(last->status, fd))
 	{
 		if (ft_any_stopped(job))
-			ft_stopped(_WSTOPPED, fd);
+			ft_stopped(WSTOPPED, fd);
 		else if (!(ft_exited(last, fd)
 			|| ft_signaled(last->status, fd)))
 			write(fd, "                              ", 30);

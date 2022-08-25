@@ -6,7 +6,7 @@
 /*   By: geargenc <geargenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 09:09:06 by jolabour          #+#    #+#             */
-/*   Updated: 2019/04/25 03:55:42 by jolabour         ###   ########.fr       */
+/*   Updated: 2022/08/25 17:59:38 by geargenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 void			clean_print(t_42sh *sh)
 {
-	int			i;
-	int			pos_line;
-
-	i = 0;
-	pos_line = get_curent_line(sh);
+	sh->winsize = get_winsize();
 	sh->stdin->nb_line = (sh->prompt_len + sh->stdin->len_line) / (sh->winsize);
 	ft_move_cursor_left(sh->stdin->cursor_pos, sh->prompt_len);
 	tputs(tgetstr("cd", NULL), 0, putchar_custom);

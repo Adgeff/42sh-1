@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   substitute_history.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolabour <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: geargenc <geargenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 04:18:59 by jolabour          #+#    #+#             */
-/*   Updated: 2019/04/20 04:02:57 by jolabour         ###   ########.fr       */
+/*   Updated: 2022/08/25 18:10:53 by geargenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,9 @@
 
 void		modify_last_history(t_42sh *sh)
 {
-	int		i;
-	int		i2;
-	int		size;
-	int		nb_replace;
 	int		fd;
 
-	i = 0;
-	i2 = 0;
-	size = 0;
 	fd = 0;
-	nb_replace = 0;
 	add_to_list(sh, sh->history_mark->last_str);
 	fd = open(sh->path_history, O_RDWR);
 	lseek(fd, sh->history_mark->size + 1, SEEK_END);
