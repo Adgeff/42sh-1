@@ -6,7 +6,7 @@
 /*   By: geargenc <geargenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 04:26:44 by jolabour          #+#    #+#             */
-/*   Updated: 2022/08/25 17:56:06 by geargenc         ###   ########.fr       */
+/*   Updated: 2022/08/31 12:55:04 by geargenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@
 #  define PROG_NAME "21sh"
 # endif
 
-typedef struct				s_list_ari
-{
-	struct s_list_ari		*next;
-	int						nbr;
-	int						opt;
-	char					*var;
-	char					*name;
-}							t_list_ari;
+// typedef struct				s_list_ari
+// {
+// 	struct s_list_ari		*next;
+// 	int						nbr;
+// 	int						opt;
+// 	char					*var;
+// 	char					*name;
+// }							t_list_ari;
 
 typedef struct				s_env
 {
@@ -198,7 +198,6 @@ typedef struct				s_42sh
 	t_alias_mark			*alias;
 	t_ht					hashtable;
 	t_var_mark				*var;
-	t_list_ari				*ari;
 	char					*arg_r;
 	pid_t					pgid;
 	int						forked;
@@ -497,7 +496,7 @@ int							ft_set_errno(int n);
 */
 
 char						*ft_joinpath(const char *path, const char *name);
-
+void						check_local_variable(t_42sh *sh, char *str);
 void						print_env_array(char **env);
 int							check_is_builtin(char *str);
 
@@ -643,66 +642,6 @@ void						builtin_exit(t_42sh *sh);
 int							check_valid_var(char *str);
 int							check_var(t_var_mark **var, char **split);
 void						builtin_cd(t_42sh *sh);
-
-/*
-**							ft_erase_space.c
-*/
-
-int							ft_exp_null(char *str);
-char						*ft_erase_space(char *str);
-
-/*
-**							ft_true_op.c
-*/
-
-char						*ft_true_op(char *str, int size);
-
-/*
-**							ft_logic_op.c
-*/
-
-char						*ft_logic_op(char *str, int size);
-
-/*
-**							ft_math_op.c
-*/
-
-char						*ft_math_op(char *str, int n);
-int							ft_count_prev_num(char *str, int m);
-int							ft_count_next_num(char *str);
-
-/*
-**							ft_itoa_exp_ari.c
-*/
-
-void						ft_itoa_exp_ari(char *str, int nbr, int n);
-
-/*
-**							ft_check_exp_ari.c
-*/
-
-int							ft_check_exp_ari(char *str);
-
-/*
-**							ft_check_var.c
-*/
-
-char						*ft_check_var(char *str, t_list_ari **list_var,
-		t_42sh *sh);
-char						*ft_exp_ary(char *str, t_42sh *sh);
-void						check_local_variable(t_42sh *sh, char *str);
-int							ft_var_modif(char *str, int i, int j,
-		t_list_ari *new);
-
-/*
-** 							ft_utils_exp_ari.c
-*/
-
-char						*my_get_var(t_42sh *sh, char *name);
-t_list_ari					*ft_add_var_exp(char *str, size_t *i
-							, int j, char **nb);
-void						ft_replace_vari(t_list_ari *tmp, t_42sh *sh);
-void						ft_free_ari(t_list_ari *list, char *str);
 
 /*
 **							builtin_cd

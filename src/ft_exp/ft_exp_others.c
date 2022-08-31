@@ -6,7 +6,7 @@
 /*   By: geargenc <geargenc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:29:55 by geargenc          #+#    #+#             */
-/*   Updated: 2019/04/20 05:11:02 by geargenc         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:55:54 by geargenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,37 +33,34 @@ int			ft_exp_var(t_txtlist *txt, t_42sh *shell)
 	return (0);
 }
 
-char		*ft_del_ending_spaces(char *str)
+int			ft_ari_illegal_char(char *expr, char *illegal)
 {
-	size_t	i;
-	size_t	last;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == ' ')
-		{
-			last = i;
-			while (str[i] == ' ')
-				i++;
-			if (!str[i])
-				str[last] = '\0';
-		}
-		else
-			i++;
-	}
-	return (str);
+	ft_putstr_fd("42sh: ", STDERR_FILENO);
+	ft_putstr_fd(expr, STDERR_FILENO);
+	ft_putstr_fd(": illegal character: ", STDERR_FILENO);
+	ft_putchar_fd(*illegal, STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
+	free(expr);
+	return (-1);
 }
 
 int			ft_exp_expr(t_txtlist *txt, t_42sh *shell)
 {
+	long	res;
 	char	*exp;
 
 	txt->data = ft_strsub(txt->data, txt->start + 3, txt->len - 5);
-	exp = ft_simple_expanse(txt->data, shell);
-	free(txt->data);
-	if (!(txt->data = ft_exp_ary(exp, shell)))
+	if ((exp = ft_strchr(txt->data, '\\')) ||
+		(exp = ft_strchr(txt->data, '\'')))
+		return (ft_ari_illegal_char(txt->data, exp));
+	if (!(exp = ft_simple_expanse_free(txt->data, shell)) ||
+		ft_ari(exp, &res, 0, shell))
+	{
+		if (exp)
+			free(exp);
 		return (-1);
-	ft_del_ending_spaces(txt->data);
+	}
+	free(exp);
+	txt->data = ft_lgtoa(res);
 	return (0);
 }
